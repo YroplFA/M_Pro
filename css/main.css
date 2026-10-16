@@ -94,8 +94,20 @@ width: 100%;
 .abg-5 li:nth-child(6) { margin-left: 37%; }
 .abg-5 li:nth-child(6):after { animation-delay: 3.2s; }
 
-.abg-5 li:nth-child(7) { margin-left: 51%; }
+.abg-5 li:nth-child(7) { margin-left: 59%; }
 .abg-5 li:nth-child(7):after { animation-delay: 5s; }
+
+.abg-5 li:nth-child(7) { margin-left: -57%; }
+.abg-5 li:nth-child(7):after { animation-delay: 2s; }
+
+.abg-5 li:nth-child(7) { margin-left: -28%; }
+.abg-5 li:nth-child(7):after { animation-delay: 2.9s; }
+
+.abg-5 li:nth-child(7) { margin-left: 28%; }
+.abg-5 li:nth-child(7):after { animation-delay: 7s; }
+
+.abg-5 li:nth-child(7) { margin-left: 10%; }
+.abg-5 li:nth-child(7):after { animation-delay: 5.6s; }
 
 @keyframes animationbg-5 {
     0% {
