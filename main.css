@@ -12,7 +12,21 @@ body {
     color: #000000;
     font-size: 18px;
 }
-
+/*----------------------------*/
+@media (max-width: 768px) {
+  body {
+    font-size: 16.0px; /* Удобный для чтения шрифт */
+  }
+  .container {
+    width: 100%; /* Блок занимает всю ширину экрана */
+    padding: 10.0px;
+  }
+  img {
+    max-width: 100%; /* Картинки не вылезают за границы */
+    height: auto;
+  }
+}
+/*----------------------------*/
 a {
     text-decoration: none;
 }
