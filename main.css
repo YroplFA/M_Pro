@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
-
 * {
     margin: 0;
     padding: 0;
@@ -11,22 +10,10 @@ body {
     font-weight: 500;
     color: #000000;
     font-size: 18px;
+    padding-left: 20px;
+    padding-right: 20px;
 }
-/*----------------------------*/
-@media (max-width: 768px) {
-  body {
-    font-size: 16.0px; /* Удобный для чтения шрифт */
-  }
-  .container {
-    width: 100%; /* Блок занимает всю ширину экрана */
-    padding: 10.0px;
-  }
-  img {
-    max-width: 100%; /* Картинки не вылезают за границы */
-    height: auto;
-  }
-}
-/*----------------------------*/
+
 a {
     text-decoration: none;
 }
@@ -36,26 +23,53 @@ img {
 }
 
 .wrapper {
-background: linear-gradient(360deg,rgba(163, 252, 235, 0.25) 0%, rgba(252, 164, 183, 0.205) 33%);
-width: 100%;
+    background: linear-gradient(360deg,rgba(163, 252, 235, 0.25) 0%, rgba(252, 164, 183, 0.205) 33%);
+    width: 100%;
+    background: linear-gradient(360deg, rgba(163, 252, 235, 0.25) 0%, rgba(252, 164, 183, 0.205) 33%);
+    width: 100%;
+    position: relative; /* Дает понять абсолютным элементам, где их границы */
+    z-index: 3;
 }
 
+/*---------------------*/
+#bg-canvas {
+    position: absolute;    /* Меняем fixed на absolute, чтобы фон тянулся по всей высоте документа */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;          /* Теперь растягивается на 100% от высоты всего контента сайта */
+    z-index: -2;           /* Уводит фон под падающие линии и текст */
+    pointer-events: none;  /* Ссылки и кнопки будут кликаться сквозь холст */
+    overflow: hidden;
+    background-size: cover;
+    background-position: center center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2), 0 16px 20px rgba(0,0,0,0.1);
+}
+
+#bg-canvas #canvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+/*---------------------*/
 .container {
     width: 1500px;
     margin: 0 auto;
+    
 }
 
 .header--fluid {
     background-color: #000000;
     width: 100%;
-    outline: 3px solid #f890bd;
+    border-bottom: 3px solid #f890bd;
 }
 
 .header-box {
     display: flex;
     justify-content: space-between; 
-    align-items: center;            /* Выравнивает текст логотипа и меню по одной линии */
-    padding: 0px 0;                /* Отступы 30px сверху и снизу внутри черной полосы */
+    align-items: center;            
+    padding: 0px 0;                
 }
 
 /*---------------------*/
@@ -64,7 +78,7 @@ width: 100%;
     top: 0;
     left: 0;
     width: 100%;
-    height: 200%;
+    height: 101px;
     overflow: hidden;
     opacity: 0.5;    
 }
@@ -109,20 +123,23 @@ width: 100%;
 .abg-5 li:nth-child(6) { margin-left: 37%; }
 .abg-5 li:nth-child(6):after { animation-delay: 3.2s; }
 
-.abg-5 li:nth-child(7) { margin-left: 59%; }
+.abg-5 li:nth-child(7) { margin-left: 60%; }
 .abg-5 li:nth-child(7):after { animation-delay: 5s; }
 
-.abg-5 li:nth-child(7) { margin-left: -57%; }
-.abg-5 li:nth-child(7):after { animation-delay: 2s; }
+.abg-5 li:nth-child(8) { margin-left: -60%; }
+.abg-5 li:nth-child(8):after { animation-delay: 2s; }
 
-.abg-5 li:nth-child(7) { margin-left: -28%; }
-.abg-5 li:nth-child(7):after { animation-delay: 2.9s; }
+.abg-5 li:nth-child(9) { margin-left: -28%; }
+.abg-5 li:nth-child(9):after { animation-delay: 2.9s; }
 
-.abg-5 li:nth-child(7) { margin-left: 28%; }
-.abg-5 li:nth-child(7):after { animation-delay: 7s; }
+.abg-5 li:nth-child(10) { margin-left: 28%; }
+.abg-5 li:nth-child(10):after { animation-delay: 7s; }
 
-.abg-5 li:nth-child(7) { margin-left: 10%; }
-.abg-5 li:nth-child(7):after { animation-delay: 5.6s; }
+.abg-5 li:nth-child(11) { margin-left: 80%; }
+.abg-5 li:nth-child(11):after { animation-delay: 5.6s; }
+
+.abg-5 li:nth-child(12) { margin-left: -93%; }
+.abg-5 li:nth-child(12):after { animation-delay: 5.6s; }
 
 @keyframes animationbg-5 {
     0% {
@@ -140,24 +157,20 @@ width: 100%;
     border-right: 110px solid transparent; 
     border-bottom: 170px solid #000000;
     position: absolute;
-    top: 370px;
-    right: 224px;
+    top: 270px;
+    right: 121px;
     transform: rotate(15deg);
 
 }
 /*---------------------*/
 
-header {
+/*header {
     padding: 0px 0;
-}
+}*/
 
 header .logo {
-    /*text-transform: uppercase;
-    font-size: 32px;
-    font-weight: 800;
-    color: #f890bd;*/
     display: inline-block;
-    display: flex;       /* Помогает идеально выровнять картинку внутри флекс-бокса */
+    display: flex;       
     align-items: center;
 }
 
@@ -168,8 +181,7 @@ header .logo img {
 }
 
 header nav {
-    /*float: right;*/
-    width: 50%;
+    width: 100%;
 }
 
 header nav ul {
@@ -200,7 +212,7 @@ header nav ul li::after {
     left: 0;
     width: 100%;
     height: 4px;
-    background-color: #f890bd; 
+    background-color: #f890bd;
     
     border-radius: 2px; 
     
@@ -230,10 +242,21 @@ header nav ul li:not(.active):hover::after {
     position: relative;
 }
 
+.hero--in {
+    width: 100%;
+    padding-top: 50px;/*Отступ перед заголовком*/
+}
+
 .hero--info {
-    width: 750px;
+    width: 650px;
     padding-top: 50px;/*Отступ перед заголовком*/
     text-align: justify;
+    border-radius: 20px;
+    backdrop-filter: blur(2px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, .5);
+    border:5px solid #000000;
+    outline: 5px solid #f890bd;
+    padding: 50px 30px 0px 30px; 
 }
 
 /*.wide-word {
@@ -241,8 +264,8 @@ header nav ul li:not(.active):hover::after {
 }*/
 
 .hero--info h1 {
-    /*text-align: center;*/
-    text-transform: uppercase;
+    /*text-align: center;
+    text-transform: uppercase;*/
     font-size: 80px;
     line-height: 0.9;
     padding-bottom: 40px;
@@ -263,10 +286,16 @@ header nav ul li:not(.active):hover::after {
 .hero img {
     position: absolute;
     width: 35%;
-    top: 100px;
-    right: 100px;
-    border:10px solid #000000;
+    top: 0px;
+    right: 0px;
+    border:5px solid #000000;
+    outline: 5px solid #f890bd;
     border-radius: 270px 270px 270px 270px;
-    outline: 3px solid #f890bd;
+    backdrop-filter: blur(2px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, .5);
 }
 
+.hero .triangle:hover {
+    opacity: 0;
+    transition: opacity 500ms ease;
+}
