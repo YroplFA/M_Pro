@@ -10,6 +10,7 @@ body {
     font-weight: 500;
     color: #000000;
     font-size: 18px;
+    overflow-x: hidden; /* Защита от случайного появления горизонтального скролла */
 }
 
 a {
@@ -18,6 +19,7 @@ a {
 
 img {
     max-width: 100%;
+    height: auto; /* Добавлено для корректного масштабирования изображений */
 }
 
 .wrapper {
@@ -129,8 +131,11 @@ img {
 /*---------------------*/
 /*---------------------*/
 .container {
-    width: 1500px;
+    max-width: 1500px;      /* Ограничивает максимальную ширину на больших мониторах */
+    width: 100%;            /* Позволяет блоку сжиматься на ноутбуках и телефонах */
     margin: 0 auto;
+    padding: 0 20px;        /* Безопасные отступы, чтобы контент не лип к краям дисплея мобильного */
+    box-sizing: border-box; /* Учитывает padding в общей ширине */
 }
 
 .header--fluid {
@@ -141,8 +146,9 @@ img {
 
 .header-box {
     display: flex;
+    justify-content: space-between; /* Распределяет логотип влево, а меню вправо */
     align-items: center;            
-    padding: 0;                
+    padding: 10px 0;                /* Добавлен отступ для аккуратного дыхания шапки */
 }
 
 header {
@@ -150,19 +156,20 @@ header {
 }
 
 header .logo {
-    display: inline-block;
     display: flex;       
     align-items: center;
+    margin-right: auto;
+    margin-left: 0; 
 }
 
 header .logo img {
-    height: 100px;        
+    height: 80px;        /* Чуть уменьшили высоту для более компактного вида */
     width: auto;         
     max-width: 100%;
 }
 
 header nav {
-    width: 100%;
+    /* Ширину 100% убрали, чтобы она не сжимала логотип во флекс-контейнере */
 }
 
 header nav ul {
@@ -180,7 +187,7 @@ header nav ul li {
 }
 
 header nav ul li a {
-    color: #fff;;
+    color: #fff;
     text-decoration: none;
     display: inline-block;
     padding-bottom: 8px;
@@ -223,6 +230,14 @@ header nav ul li:not(.active):hover::after {
     position: relative;
 }
 
+/* Главный флекс-контейнер для двух колонок (инфо и фото) */
+.hero.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; /* Выравнивание элементов по верхней границе */
+    gap: 50px;
+}
+
 .hero--in {
     width: 100%;
     padding-top: 50px; /*Отступ перед заголовком*/
@@ -232,7 +247,6 @@ header nav ul li:not(.active):hover::after {
     z-index: 2;
     max-width: 900px;
     width: 100%;
-    padding-top: 50px; 
     text-align: justify;
     border-radius: 30px;
     border: 1px solid rgba(0, 0, 0, 0.15); 
@@ -244,39 +258,125 @@ header nav ul li:not(.active):hover::after {
 }
 
 .hero--info h1 {
-    font-size: 80px;
-    line-height: 0.9;
-    padding-bottom: 40px;
+    font-size: 60px; /* Снизили с 80px для лучшего баланса на средних экранах */
+    line-height: 1.0;
+    padding-bottom: 30px;
 }
 
-.hero--info h2{
-    font-size: 40px;
-    line-height: 0.9;
+.hero--info h2 {
+    font-size: 32px; /* Снизили с 40px */
+    line-height: 1.1;
     padding-bottom: 10px;
+    margin-top: 20px;
 }
 
 .hero--info p {
     padding-bottom: 20px; /*Отступ перед описанием*/
     font-weight: 600;
+    line-height: 1.6;
 }
-.hero--image{   /* Контейнер с фотом профиля */
-    flex: 1;          /* Занимает оставшиеся 40% ширины ряда */
-    max-width: 600px;
+
+.hero--image {   /* Контейнер с фото профиля */
+    flex: 1;          
+    max-width: 450px;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative; /* Добавлено, чтобы служить базой для картинки */
 }
 
-.hero--image img{
-    position: absolute;
+.hero--image img {
+    /* position: absolute; — перенесено в блок десктопного позиционирования, чтобы на мобильных не ломать поток */
+    width: 100%;
     max-width: 450px;
-    top: 0px;
-    right: 0px;
-    border-radius: 270px;
+    border-radius: 50%; /* Использовано 50% вместо 270px для идеального круга в адаптивности */
     backdrop-filter: blur(1px);
     box-shadow: 0 20px 40px rgba(248, 144, 189, 0.15), 0 1px 3px rgba(0, 0, 0, 0.05);
     border: 1px solid rgba(0, 0, 0, 0.15);
     background: rgba(255, 255, 255, 0.05);
 }
 
+/*--------------------------------------------------------------
+   МЕДИА-ЗАПРОСЫ ДЛЯ МОБИЛЬНЫХ УСТРОЙСТВ И ПЛАНШЕТОВ
+--------------------------------------------------------------*/
+
+/* Для больших экранов возвращаем абсолютное позиционирование картинки, как у вас было задумано */
+@media (min-width: 1025px) {
+    .hero--image img {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+}
+
+/* ПЛАНШЕТЫ И НОУТБУКИ (Экран меньше 1024px) */
+@media (max-width: 1024px) {
+    .hero.container {
+        flex-direction: column-reverse; /* На планшетах фото будет сверху, а текст снизу */
+        align-items: center;
+        gap: 40px;
+    }
+
+    .hero--info h1 {
+        font-size: 46px;
+        text-align: center;
+    }
+
+    .hero--image {
+        max-width: 350px; /* Сужаем блок фото на планшетах */
+    }
+}
+
+/* МОБИЛЬНЫЕ ТЕЛЕФОНЫ (Экран меньше 768px) */
+@media (max-width: 768px) {
+    body {
+        font-size: 16px; /* Оптимальный читаемый размер шрифта для телефона */
+    }
+
+    /* Адаптация Шапки (Header) */
+    .header-box {
+        flex-direction: column; /* Элементы шапки выстраиваются вертикально */
+        gap: 15px;
+        padding: 15px 0;
+    }
+
+    header nav ul {
+        justify-content: center; /* Центрируем меню на телефонах */
+        gap: 20px;
+        padding-left: 0;
+    }
+
+    header nav ul li a {
+        font-size: 16px;
+        padding-bottom: 5px;
+    }
+
+    /* Адаптация Главного Экрана (Hero) */
+    .hero {
+        padding-bottom: 50px;
+    }
+
+    .hero--in {
+        padding-top: 30px;
+    }
+
+    .hero--info {
+        padding: 35px 20px 20px 20px; /* Уменьшаем внутренние поля карточки на смартфонах */
+        border-radius: 20px;
+    }
+
+    .hero--info h1 {
+        font-size: 32px; /* Компактный заголовок, не вылезающий за края телефона */
+        padding-bottom: 20px;
+    }
+
+    .hero--info h2 {
+        font-size: 22px;
+        padding-bottom: 8px;
+    }
+
+    .hero--image {
+        max-width: 250px; /* Аккуратный размер аватарки для дисплея смартфона */
+    }
+}
