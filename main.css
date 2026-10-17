@@ -57,7 +57,7 @@ img {
     top: 0;
     left: 0;
     width: 100%;
-    height: 101px;
+    height: 100%;
     overflow: hidden;
     opacity: 0.5;    
 }
@@ -142,13 +142,15 @@ img {
     background-color: #000000;
     width: 100%;
     border-bottom: 3px solid #f890bd;
+    position: relative;
+    
 }
 
 .header-box {
     display: flex;
     justify-content: space-between; /* Распределяет логотип влево, а меню вправо */
     align-items: center;            
-    padding: 10px 0;                /* Добавлен отступ для аккуратного дыхания шапки */
+    padding: 10px 0;                /* отступ */
 }
 
 header {
@@ -159,17 +161,13 @@ header .logo {
     display: flex;       
     align-items: center;
     margin-right: auto;
-    margin-left: 0; 
+    margin-left: 0;
 }
 
 header .logo img {
-    height: 80px;        /* Чуть уменьшили высоту для более компактного вида */
+    height: 80px;
     width: auto;         
     max-width: 100%;
-}
-
-header nav {
-    /* Ширину 100% убрали, чтобы она не сжимала логотип во флекс-контейнере */
 }
 
 header nav ul {
@@ -178,7 +176,7 @@ header nav ul {
     list-style: none;
     display: flex;
     justify-content: flex-end;
-    gap: 30px;
+    gap: 15px;
 }
 
 header nav ul li {
@@ -230,8 +228,7 @@ header nav ul li:not(.active):hover::after {
     position: relative;
 }
 
-/* Главный флекс-контейнер для двух колонок (инфо и фото) */
-.hero.container {
+.hero.container { /* Главный флекс-контейнер для двух колонок (инфо и фото) */
     display: flex;
     justify-content: space-between;
     align-items: flex-start; /* Выравнивание элементов по верхней границе */
@@ -258,13 +255,13 @@ header nav ul li:not(.active):hover::after {
 }
 
 .hero--info h1 {
-    font-size: 60px; /* Снизили с 80px для лучшего баланса на средних экранах */
+    font-size: 60px; 
     line-height: 1.0;
     padding-bottom: 30px;
 }
 
 .hero--info h2 {
-    font-size: 32px; /* Снизили с 40px */
+    font-size: 32px; /
     line-height: 1.1;
     padding-bottom: 10px;
     margin-top: 20px;
@@ -308,6 +305,7 @@ header nav ul li:not(.active):hover::after {
         top: 0;
         right: 0;
     }
+
 }
 
 /* ПЛАНШЕТЫ И НОУТБУКИ (Экран меньше 1024px) */
@@ -339,6 +337,9 @@ header nav ul li:not(.active):hover::after {
         flex-direction: column; /* Элементы шапки выстраиваются вертикально */
         gap: 15px;
         padding: 15px 0;
+    }
+    header .logo {
+    margin-right: none;
     }
 
     header nav ul {
