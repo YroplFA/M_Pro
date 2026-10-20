@@ -10,6 +10,7 @@
 
 <body>
     <div class="wrapper">
+
         <header class="header--fluid">
 
             <div class="container header-box">
@@ -35,27 +36,39 @@
             </div>
         </header>
 
-        <div class="hero--in">
-                <div id="bg-canvas">
-                    <canvas id="canvas"></canvas>
-                </div>
 
-                    <div class="hero container">
-                        <div class="hero--info">
-                            <h1 class="hero--text">
-                                <!--<span class="wide-word">Обо</span> мне</h1>-->
-                                <h2>Вектор развития: DevOps</h2>
-                                <p>Привет! Меня зовут Ярослав, мне 25 лет. Этот ресурс — интерактивная дорожная карта моего профессионального развития. Я сфокусирован на DevOps-инженерии: автоматизации процессов, проектировании отказоустойчивых систем и глубоком погружении в сложные архитектурные решения. Постоянный вызов и непрерывное обучение — мой главный стимул.</p>
-                                <h2>Навигация по проекту</h2>
-                                <p>Сайт разделен на три логических блока для удобного знакомства с моим профилем:</p>
-                                <p class="main--subtitle">Home — стартовая страница с ключевыми фактами и общей информацией.</p2>
-                                <p class="subtitle">Skills — подробный разбор технологического стека, инструментов и практического опыта</p2>
-                                <p class="subtitle">Certificates — подтвержденные квалификации, результаты профильного обучения и официальные достижения.</p2>
-                        </div>
-                        <div class="hero--image">
-                            <img src="img/profile.png" alt="">
-                        </div>
-                    </div>
+        <div class="hero--in">
+
+            <!--<video class="hero-video-bg" autoplay muted loop playsinline>
+                <source src="video/front_video.mp4" type="video/mp4">
+            </video>-->
+            <video class="hero-video-bg" autoplay muted loop playsinline>
+                <source src="video/front_video.mp4" type="video/mp4">
+            </video>
+
+            <!--градиент -->
+            <div class="hero-video-overlay"></div>
+
+            <div id="bg-canvas">
+                <canvas id="canvas"></canvas>
+            </div>
+
+            <div class="hero container">
+                <div class="hero--info">
+                    <h1 class="hero--text">
+                        <!--<span class="wide-word">Обо</span> мне</h1>-->
+                        <h2>Вектор развития: DevOps</h2>
+                        <p>Привет! Меня зовут Ярослав, мне 25 лет. Этот ресурс — интерактивная дорожная карта моего профессионального развития. Я сфокусирован на DevOps-инженерии: автоматизации процессов, проектировании отказоустойчивых систем и глубоком погружении в сложные архитектурные решения. Постоянный вызов и непрерывное обучение — мой главный стимул.</p>
+                        <h2>Навигация по проекту</h2>
+                        <p>Сайт разделен на три логических блока для удобного знакомства с моим профилем:</p>
+                        <p class="main--subtitle">Home — стартовая страница с ключевыми фактами и общей информацией.</p2>
+                        <p class="subtitle">Skills — подробный разбор технологического стека, инструментов и практического опыта</p2>
+                        <p class="subtitle">Certificates — подтвержденные квалификации, результаты профильного обучения и официальные достижения.</p2>
+                </div>
+                <div class="hero--image">
+                    <img src="img/profile.png" alt="">
+                </div>
+            </div>
         </div>
             
         <div class="about--me">
@@ -66,19 +79,37 @@
 
         <div class="about--games">
             <div class="container about">
-                <div class="games1--about">
-                    <img src="img/icon_CS_GO.png" alt="">
-                    <span><img src="img/icon_hours.png" alt=""> 1000+ Часов</span>
-                </div>
-                <div class="games2--about">
-                    <img src="img/icon_DbD.png" alt="">
-                    <span><img src="img/icon_hours.png" alt=""> 1000+ Часов</span>
-                </div>
-                <div class="games3--about">
-                    <img src="img/icon_EFT.png" alt="">
-                    <span><img src="img/icon_hours.png" alt=""> 1000+ Часов</span>
-                </div>   
 
+                <div class="about--text">
+                    <h1>Интересы и личное пространство</h1> 
+                    <h2>Помимо изучения нового в ИТ-инфраструктуре, важную часть моей жизни занимает стратегический гейминг. Виртуальные пространства для меня — это не просто способ занять свободное время, а уникальная площадка для получения спортивного адреналина, развития тактического мышления и отработки навыков взаимодействия в стрессовых ситуациях. Каждый проект привлекает меня своей уникальной внутренней экономикой, сложными правилами и необходимостью быстро принимать решения на основе постоянно меняющихся данных.</h2>    
+                
+                
+                    <div class="about-cards">
+
+                        <div class="games1--about">
+                            <img src="img/icon_CS_GO.png" alt="">
+                            <span><img src="img/icon_hours.png" alt=""> 1000+ Часов</span>
+                        </div>
+                        <div class="games1--about">
+                            <img src="img/icon_DbD.png" alt="">
+                            <span><img src="img/icon_hours.png" alt=""> 1000+ Часов</span>
+                        </div>
+                        <div class="games1--about">
+                            <img src="img/icon_TFinals.png" alt="">
+                            <span><img src="img/icon_hours.png" alt=""> 1000+ Часов</span>
+                        </div>                       
+                        <div class="games1--about">
+                            <img src="img/icon_EFT.png" alt="">
+                            <span><img src="img/icon_hours.png" alt=""> 1000+ Часов</span>
+                        </div>
+                        <div class="games1--about">
+                            <h3>Подробнее</h3> 
+                        </div>
+
+                    </div>
+
+                </div>
             </div>
         </div>
     </div>

@@ -26,6 +26,8 @@ img {
     background-size: cover;
 }
 
+
+
 /*---------------------*/
 /*---------------------*/
 #bg-canvas {
@@ -148,8 +150,7 @@ img {
     background-color: #000000;
     width: 100%;
     border-bottom: 3px solid #f890bd;
-    position: relative;
-    
+    position: relative;  
 }
 
 .header-box {
@@ -171,8 +172,7 @@ header .logo {
 }
 
 header .logo img {
-    height: 80px;
-    width: auto;         
+    height: 80px;         
     max-width: 100%;
 }
 
@@ -230,28 +230,50 @@ header nav ul li:not(.active):hover::after {
 /*---------------------*/
 
 .hero {
-    padding-bottom: 100px;
+    /*padding-bottom: 50px;  Между About и 1 контейнером (После головы)*/
     position: relative;
-    
 }
 
 .hero.container { /* Главный флекс-контейнер для двух колонок (инфо и фото) */
     display: flex;
     justify-content: space-between;
     align-items: flex-start; /* Выравнивание элементов по верхней границе */
+    padding: 70px 0 70px 0; /* Между About и 1 контейнером (После головы)*/
 }
 
-.hero--in {
+.hero--in { /*Контейнер для фото и описания*/
     position: relative ; 
-    width: 100%;
-    padding-top: 50px;             /* Отступ перед заголовком */
+    max-width: 100%;
+    height: 100%;
     overflow: hidden;   
     z-index: 1;
 }
 
+.hero-video-bg { /* Контейнер с видео профиля */
+    position: absolute;
+    min-width: 100%;
+    min-height: 100%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2;
+    transform: translate(0, 0);
+    }
+
+    .hero-video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, #c592a7 0%, #4aefe736 75%, #4aefe746 75%);
+    z-index: -1;
+    pointer-events: none;
+    }
+
 .hero--info { /*Контейнер краткой информации*/
     z-index: 2;
-    max-width: 650px;
+    max-width: 750px;
     width: 100%;
     text-align: justify;
     border-radius: 30px;
@@ -259,7 +281,7 @@ header nav ul li:not(.active):hover::after {
     padding: 30px 30px 30px 30px;
     box-sizing: border-box;
     backdrop-filter: blur(10px);
-    box-shadow: 0 20px 40px rgb(14, 11, 13), 0 1px 3px rgb(197, 146, 167);
+    box-shadow: 0 20px 40px rgb(14, 11, 13), 0 1px 3px #c592a7;
     border: 1px solid rgba(0, 0, 0, 0.15);
 }
 
@@ -270,23 +292,30 @@ header nav ul li:not(.active):hover::after {
     text-align: center;
 }
 
-.hero--info h2 {
-    font-size: 28px;
+.hero--info h2 { /* 1 эпат текста*/
+    font-size: 50px;
+    line-height: 1.1;
+    padding-bottom: 10px;
+    margin-top: 30px;
+}
+
+.hero--info p{  /* 2 эпат текста*/
+    font-size: 24px;
     line-height: 1.1;
     padding-bottom: 10px;
     margin-top: 30px;
 }
 
 
-.hero--info .subtitle {
-    font-size: 14px;
+.hero--info .subtitle { /*3 эпат текста последние два*/
+    font-size: 18px;
     line-height: 1.1;
     padding-bottom: 5px;
     margin-top: 5px;
 }
 
-.hero--info .main--subtitle {
-    font-size: 14px;
+.hero--info .main--subtitle { /* 3 эпат текста первый*/
+    font-size: 18px;
     line-height: 1.1;
     padding-bottom: 5px;
     margin-top: 20px;
@@ -294,18 +323,18 @@ header nav ul li:not(.active):hover::after {
 
 
 .hero--image {   /* Контейнер с фото профиля */
-    flex: 2;          
+    flex: 2;         
     max-width: 450px;
-    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative; /* Добавлено, чтобы служить базой для картинки */
-    margin-right: 100px;
+    margin: 130px 130px 100px 100px;
+    z-index: 1;
 }
 
 .hero--image img {
-    position: absolute;
+    position: relative;
     width: 100%;
     max-width: 450px;
     border-radius: 50%;
@@ -323,41 +352,62 @@ header nav ul li:not(.active):hover::after {
     position: relative;
     text-align: center;
     text-transform: uppercase;
-    padding: 100px 0;
-    font-size: 28px;
+    font-size: 22px;
 }
 
 .about--games { 
-    width: 100%;
-    background-color: #fff;
+    position: relative;
+    max-width: 100%;
+    max-height: 100%;
+    background: linear-gradient(to bottom,  #f890bd71 0%, #4ce9d722 0%, #f890bd58 100%), url('./img/front_image2.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     color: 000000;
+    padding: 20px 20px 20px 20px;
 }
 
-.about > div > img {
-    width: 270px;
-    height: 270px;
+.about > div > .about-cards > div > img { /*Карточки игр*/
+    width: 100%;
+    max-height: 270px;
+
+    aspect-ratio: 1 / 1; /*(ширина равна высоте) */
+    object-fit: cover;
+    
     border-radius: 10%;
     transition: all 500ms ease;
     box-sizing: border-box;
     backdrop-filter: blur(10px);
     box-shadow: 0 20px 40px rgb(14, 11, 13), 0 1px 3px rgb(197, 146, 167);
     border: 1px solid rgba(0, 0, 0, 0.15);
+    
 }
 
-.about > div > img:hover {
+.about img:hover {
     transform: scale(0.9);
+    transition: transform 0.3s ease;
 }
 
 .about span img { /*размер часиков*/
-    width: 30px;
-    height: 30px;
+    max-width: 30px;
+    max-height: 30px;
 }
 
 .about {
     display: flex; /*расстановка всех объектов*/
-    justify-content: space-between;/*расстягиваю на всю шируну*/
+    flex-direction: column;
+    align-items: center;
+    /*justify-content: space-between;/*расстягиваю на всю шируну*/
     width: 100%;
     padding: 50px 0;
+    box-sizing: border-box;
+}
+
+.about-cards {
+    display: flex;         /* Карточки внутри этого контейнера встанут в горизонтальный ряд */
+    justify-content: space-between; /* Распределяем карточки равномерно по ширине */
+    width: 100%;           /* Растягиваем на всю ширину */
+    margin-top: 40px;      /* Отступ сверху от текста до карточек */
 }
 
 .about span {
@@ -371,7 +421,39 @@ header nav ul li:not(.active):hover::after {
     top: 5px;
 }
 
+.about--text--game {
+    max-width: 100%;
+    border-radius: 30px;
+    padding: 30px 30px 30px 30px;
+    box-sizing: border-box;
+}
 
+.about--text {
+    z-index: 2;
+    max-width: 100%;;
+    width: 100%;
+    text-align: justify;
+    border-radius: 30px;
+    color: #fff;
+    padding: 30px 30px 30px 30px;
+    box-sizing: border-box;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 20px 40px rgb(14, 11, 13), 0 1px 3px rgb(197, 146, 167);
+    border: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.about--text h1 {
+    font-size: 50px;
+    line-height: 1.1;
+    padding-bottom: 10px;
+    margin-top: 30px;
+}
+
+.about--text h2 {
+    font-size: 18px;
+    line-height: 1.1;
+    padding-bottom: 5px;
+}
 
 
 /*--------------------------------------------------------------
@@ -390,10 +472,52 @@ header nav ul li:not(.active):hover::after {
 
 /* ПЛАНШЕТЫ И НОУТБУКИ (Экран меньше 1024px) */
 @media (max-width: 1024px) {
+    .header-box {
+        flex-direction: column;   
+        justify-content: center;  /* Центрируем элементы по главной оси */
+        align-items: center;      /* Центрируем элементы по поперечной оси */
+        gap: 15px;                /* Расстояние между логотипом и меню */
+        padding: 15px 20px;       /* Добавляем безопасные отступы, чтобы контент не лип к краям */
+    }
+
+    .header .logo {
+        margin: 0 auto;           /* Автоматические отступы слева и справа выровняют блок строго по центру */
+        display: flex;
+        justify-content: center;
+    }
+
+    .header .logo img {
+        height: 65px;             /* Слегка уменьшаем логотип на мобильных, чтобы сэкономить место */
+        width: auto;
+    }
+    
+    .header-box nav{
+        display: flex;
+        justify-content: center;  /* Центрируем ссылки Home, Skills, Certificates */
+        flex-wrap: wrap;          /* Если экран совсем маленький, ссылки перенесутся на новую строку без поломки */
+        gap: 20px;                /* Расстояние между ссылками */
+        width: 100%;
+    }
+    
+    .header-box ul {
+        display: flex;
+        justify-content: center;  /* Центрируем ссылки Home, Skills, Certificates */
+        flex-wrap: wrap;          /* Если экран совсем маленький, ссылки перенесутся на новую строку без поломки */
+        gap: 20px;                /* Расстояние между ссылками */
+        width: 100%;
+    }
+
     .hero.container {
+        display: flex;
         flex-direction: column-reverse; /* На планшетах фото будет сверху, а текст снизу */
         align-items: center;
         gap: 40px;
+        padding: 20px; 
+    }
+
+    .hero--info {
+        max-width: 100%;
+        margin-top: 0;
     }
 
     .hero--info h1 {
@@ -403,6 +527,8 @@ header nav ul li:not(.active):hover::after {
 
     .hero--image {
         max-width: 350px; /* Сужаем блок фото на планшетах */
+        width: 100%;
+        margin: 0 auto;
     }
 }
 
@@ -418,8 +544,8 @@ header nav ul li:not(.active):hover::after {
         gap: 15px;
         padding: 15px 0;
     }
-    header .logo {
 
+    header .logo {
     margin-right: none;
     }
 
@@ -439,13 +565,10 @@ header nav ul li:not(.active):hover::after {
         padding-bottom: 50px;
     }
 
-    .hero--in {
-        padding-top: 30px;
-    }
-
     .hero--info {
         padding: 35px 20px 20px 20px; /* Уменьшаем внутренние поля карточки на смартфонах */
         border-radius: 20px;
+        margin-top: 0;
     }
 
     .hero--info h1 {
